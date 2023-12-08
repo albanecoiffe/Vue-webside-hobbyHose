@@ -71,7 +71,7 @@ app.component('product-display', {
     },
     computed: {
         title() {
-            return this.brand + " : " + this.product
+            return this.brand + ' ' + this.product
         },
         image() {
             return this.variants[this.selectedVariant].image

@@ -346,6 +346,42 @@ footer {
   border: none;
 }
 
+/*titre insta*/
+.instaTest {
+  text-decoration: none;
+  color: #fb6f92;
+}
+
+
+/* page welcom, parners*/
+.media-item {
+  max-height: 500px;
+  /* Ajustez cette valeur selon vos besoins */
+  width: auto;
+  display: block;
+  margin: 0;
+  /* Cela élimine la marge externe autour de l'image */
+}
+
+.media-item img {
+  border: none;
+  box-shadow: none;
+  display: block;
+  width: 100%;
+  /* Cela assure que l'image s'étire pour remplir la largeur de son conteneur */
+  height: auto;
+  /* Cela assure que la hauteur de l'image s'ajuste tout en gardant ses proportions */
+  padding: 0;
+  /* Cela élimine le padding autour de l'image */
+}
+
+.container,
+.row,
+.col-md-6 {
+  padding: 0;
+  /* Cela élimine le padding sur les conteneurs Bootstrap */
+}
+
 
 /* Media query for tablets */
 @media (max-width: 768px) {
