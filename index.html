@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobby horse shop</title>
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.1/font/bootstrap-icons.min.css"
+        integrity="sha512-WYaDo1TDjuW+MPatvDarHSfuhFAflHxD87U9RoB4/CSFh24/jzUHfirvuvwGmJq0U7S9ohBXy4Tfm2UKkp2gA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class = "container">
+    <div id="app">
+        <nav class="navbar navbar-expand-lg custom-navbar">
+            <div class="container-fluid">
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="welcom.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="luxe.html">Luxe</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="accessories.html">Accessories</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>  
+
+        <div class="cart">Cart({{cart.length}})</div>
+
+        <product-display :premium="premium" @add-to-cart="updateCart"></product-display><!--Components & Props-->
+        
+    </div>
+
+    <script src="./main.js"></script>
+    <script src="./components/ProductDisplay.js"></script>
+    <script src="./components/ReviewForm.js"></script>
+    <script src="./components/ReviewList.js"></script>         
+        
+   
+</div>
+    
+    
+</div>
+
+
+
+    <script>
+        const mountedApp = app.mount('#app')
+    </script>
+</body>
+<hr><footer>
+        <div class="centered-link">
+        <a href="home.html" class="homelink">Hobby horse shop</a>
+        </div><br>
+        <div class="centered-link">
+        <a href="home.html" class="homelink">Ur Life With Hobby Horse</a>
+        </div><br><br>
+       
+    </footer>
+</html>
