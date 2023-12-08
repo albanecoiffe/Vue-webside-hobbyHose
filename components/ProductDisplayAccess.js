@@ -39,6 +39,88 @@ app.component('product-display', {
                     </button>
                 </div>
             </div>
+            <br><br><br><br>
+
+
+            <!-- d'ajout accessoires -->
+
+            <div class="product-display container">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <img :src="image2" :key="image2" class="img-fluid" alt="product image">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <h1>{{ title2 }}</h1>
+                        <p>{{ description }}</p>
+                        <p v-if="inStock">In Stock</p>
+                        <p v-else>Out of Stock</p>
+                        <p>Shipping: {{ shipping }}</p>
+                        <ul>
+                            <li v-for="detail in details2" :key="detail">{{ detail }}</li>
+                        </ul>
+                        <div class="color-circle-container">
+                            <div
+                                v-for="(variants2, index) in variants2"
+                                :key="variants2.id"
+                                @mouseover="updateVariant2(index)"
+                                class="color-circle"
+                                :style="{ backgroundColor: variants2.color }">
+                            </div>
+                        </div>
+                        <button
+                            class="button"
+                            :class="{ disabledButton: !inStock }"
+                            :disabled="!inStock"
+                            @click="addToCart2">
+                            Add to Cart
+                        </button>
+
+
+                    </div>
+                </div>
+            </div>
+            <br><br><br><br>
+
+            <!-- d'ajout accessoires -->
+
+            <div class="product-display container">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <img :src="image3" :key="image3" class="img-fluid" alt="product image">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <h1>{{ title3 }}</h1>
+                        <p>{{ description }}</p>
+                        <p v-if="inStock">In Stock</p>
+                        <p v-else>Out of Stock</p>
+                        <p>Shipping: {{ shipping }}</p>
+                        <ul>
+                            <li v-for="detail in details3" :key="detail">{{ detail }}</li>
+                        </ul>
+                        <div class="color-circle-container">
+                            <div
+                                v-for="(variants3, index) in variants2"
+                                :key="variants3.id"
+                                @mouseover="updateVariant3(index)"
+                                class="color-circle"
+                                :style="{ backgroundColor: variants3.color }">
+                            </div>
+                        </div>
+                        <button
+                            class="button"
+                            :class="{ disabledButton: !inStock }"
+                            :disabled="!inStock"
+                            @click="addToCart3">
+                            Add to Cart
+                        </button>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
             <review-list v-if="reviews.length" :reviews="reviews"></review-list>
             <review-form @review-submitted="addReview"></review-form>
         </div>`,
@@ -46,7 +128,8 @@ app.component('product-display', {
         return {
             cart: 0,
             product: 'Hobby horse accessories',
-            brand: 'Ur Life With Hobby Horse : ',
+            brand: 'Jumping : ',
+
             selectedVariant: 0,
             description: 'You cannot buy Hobby Horse without the associated accessories!',
             details: ['Made in France', 'Designed by Olivier Robertodo', 'Hauteur: 1 metre', `Price : 150 CAD`],
@@ -57,15 +140,66 @@ app.component('product-display', {
                 { id: 2237, color: '#A7D397', image: 'images/jump_grass.webp', quantity: 1 },
 
             ],
+
+            product2: 'Hobby horse accessories',
+            brand2: ' Halter : ',
+            selectedVariant2: 0,
+            description2: 'You cannot buy Hobby Horse without the associated accessories!',
+            details2: ['Made in France', 'Designed by Gerald Goriogo', 'Taille : Unique', `Price : 15 CAD`],
+
+            variants2: [
+                { id: 2234, color: '#e57386', image2: 'images/licol_rose.jpeg', quantity2: 64 },
+                { id: 2235, color: '#317AC1', image2: 'images/licol_bleu.jpeg', quantity2: 64 },
+                { id: 2236, color: '#E1A624', image2: 'images/licol_jaune.jpeg', quantity2: 1 },
+
+            ],
+
+            product3: 'Hobby horse accessories',
+            brand3: ' Show ribbon : ',
+            selectedVariant3: 0,
+            description3: 'You cannot buy Hobby Horse without the associated accessories!',
+            details3: ['Made in France', 'Designed by Farida Briochio', 'Taille : Unique', `Price : 4 CAD`],
+
+            variants3: [
+                { id: 2234, color: '#e57386', image3: 'images/flot_rose.jpeg', quantity2: 0 },
+                { id: 2235, color: '#317AC1', image3: 'images/flot_bleu.jpeg', quantity2: 64 },
+                { id: 2236, color: '#E1A624', image3: 'images/flot_jaune.jpeg', quantity2: 1 },
+
+            ],
+
+
+
             reviews: []
         }
     },
+
+
     methods: {
         addToCart() {
             this.$emit('add-to-cart', this.variants[this.selectedVariant].id) //Communicating Events
         },
         updateVariant(index) {
             this.selectedVariant = index
+        },
+        addReview(review) {
+            this.reviews.push(review)
+        },
+
+        addToCart2() {
+            this.$emit('add-to-cart', this.variants2[this.selectedVariant2].id) //Communicating Events
+        },
+        updateVariant2(index) {
+            this.selectedVariant2 = index
+        },
+        addReview(review) {
+            this.reviews.push(review)
+        },
+
+        addToCart3() {
+            this.$emit('add-to-cart', this.variants3[this.selectedVariant3].id) //Communicating Events
+        },
+        updateVariant3(index) {
+            this.selectedVariant3 = index
         },
         addReview(review) {
             this.reviews.push(review)
@@ -86,6 +220,27 @@ app.component('product-display', {
                 return 'Free'
             }
             return 15
-        }
+        },
+
+        title2() {
+            return this.brand2 + ' ' + this.product2
+        },
+        image2() {
+            return this.variants2[this.selectedVariant2].image2
+        },//Computed Properties
+        inStock2() {
+            return this.variants2[this.selectedVariant2].quantity2
+        },
+
+        title3() {
+            return this.brand3 + ' ' + this.product3
+        },
+        image3() {
+            return this.variants3[this.selectedVariant3].image3
+        },//Computed Properties
+        inStock3() {
+            return this.variants3[this.selectedVariant3].quantity3
+        },
     }
 })
+
