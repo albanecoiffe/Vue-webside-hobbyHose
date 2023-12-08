@@ -7,9 +7,7 @@ app.component('product-display', {
     },
     template:
         /*html*/
-        `
-    
-        <div class="product-display">
+        `<div class="product-display">
             <div class="row">
             <div class="col-12 col-md-6">
                 <img :src="image" class="img-fluid" alt="product image"> <!-- Image responsive -->
