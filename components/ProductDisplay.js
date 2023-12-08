@@ -7,41 +7,41 @@ app.component('product-display', {
     },
     template:
         /*html*/
-        `<div class="product-display">
+        `<div class="product-display container">
             <div class="row">
-            <div class="col-12 col-md-6">
-                <img :src="image" class="img-fluid" alt="product image"> <!-- Image responsive -->
+                <div class="col-12 col-md-6">
+                    <img :src="image" :key="image" class="img-fluid" alt="product image">
+                </div>
+                <div class="col-12 col-md-6">
+                    <h1>{{ title }}</h1>
+                    <p>{{ description }}</p>
+                    <p v-if="inStock">In Stock</p>
+                    <p v-else>Out of Stock</p>
+                    <p>Shipping: {{ shipping }}</p>
+                    <ul>
+                        <li v-for="detail in details" :key="detail">{{ detail }}</li>
+                    </ul>
+                    <div class="color-circle-container">
+                        <div
+                            v-for="(variant, index) in variants"
+                            :key="variant.id"
+                            @mouseover="updateVariant(index)"
+                            class="color-circle"
+                            :style="{ backgroundColor: variant.color }">
+                        </div>
+                    </div>
+                    <button
+                        class="button"
+                        :class="{ disabledButton: !inStock }"
+                        :disabled="!inStock"
+                        @click="addToCart">
+                        Add to Cart
+                    </button>
+                </div>
             </div>
-            <div class="col-12 col-md-6">
-                <h1>{{ title }}</h1>
-                <p>{{ description }}</p>
-                <p v-if="inStock">In Stock</p>
-                <p v-else>Out of Stock</p>
-                <p>Shipping: {{ shipping }}</p>
-                <ul>
-                    <li v-for="detail in details">{{ detail }}</li>
-                </ul>
-                <div 
-                    v-for="(variant, index) in variants" 
-                    :key="variant.id" 
-                    @mouseover="updateVariant(index)"
-                    class="color-circle"
-                    :style="{backgroundColor : variant.color}">
-                </div><!--Class & Style Binding-->
-
-                <button 
-                    class="button" 
-                    :class="{ disabledButton: !inStock }"
-                    :disabled="!inStock"
-                    v-on:click="addToCart">
-                    Add to Cart
-                </button><!--Event Handling--><!--Class & Style Binding-->
-
-            </div>
-        </div>
-        <review-list v-if="reviews.length" :reviews="reviews"></review-list><!--Forms & v-model-->
-        <review-form @review-submitted="addReview"></review-form>
-    </div>`,
+            <review-list v-if="reviews.length" :reviews="reviews"></review-list>
+            <review-form @review-submitted="addReview"></review-form>
+        </div>`,
     data: function () {
         return {
             cart: 0,

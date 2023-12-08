@@ -339,6 +339,12 @@ footer {
 }
 
 
+/*bouton submit des formulaire review*/
+.btn-custom {
+  background-color: #fb6f92;
+  color: white;
+  border: none;
+}
 
 
 /* Media query for tablets */
